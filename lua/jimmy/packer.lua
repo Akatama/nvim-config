@@ -14,12 +14,20 @@ return require('packer').startup(function(use)
 	}
 
 	use({
-		'folke/tokyonight.nvim',
-		as = 'tokyonight',
+		'EdenEast/nightfox.nvim',
+		as = 'Nightfox',
 		config = function()
-			vim.cmd('colorscheme tokyonight-night')
+			vim.cmd('colorscheme carbonfox')
 		end
 	})
+
+    use {
+        'feline-nvim/feline.nvim',
+        requires = { 
+            {"kyazdani42/nvim-web-devicons"},
+            {"lewis6991/gitsigns.nvim"},
+        }
+    }
 
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use('nvim-treesitter/playground')

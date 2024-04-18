@@ -1,2 +1,2 @@
 require("jimmy")
-print("hello")
+require("jimmy.ui.feline")
