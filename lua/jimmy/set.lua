@@ -1,3 +1,4 @@
+vim.o.guifont="FiraCode Nerd Font Medium:h11"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
