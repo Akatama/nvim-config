@@ -1,2 +1,2 @@
 require("jimmy")
-require("jimmy.ui.feline")
+require("jimmy.ui.feline");

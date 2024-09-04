@@ -14,10 +14,10 @@ return require('packer').startup(function(use)
 	}
 
 	use({
-		'EdenEast/nightfox.nvim',
-		as = 'Nightfox',
+		"https://codeberg.org/jthvai/lavender.nvim",
+		as = 'lavender',
 		config = function()
-			vim.cmd('colorscheme carbonfox')
+			vim.cmd('colorscheme lavender')
 		end
 	})
 
