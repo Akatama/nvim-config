@@ -1,0 +1,8 @@
+require("jimmy.after.plugin.colors")
+require("jimmy.after.plugin.fugitive")
+require("jimmy.after.plugin.gitsigns")
+require("jimmy.after.plugin.harpoon")
+require("jimmy.after.plugin.lsp")
+require("jimmy.after.plugin.telescope")
+require("jimmy.after.plugin.treesitter")
+require("jimmy.after.plugin.undotree")
