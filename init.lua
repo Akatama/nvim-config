@@ -1,1 +1,1 @@
-require("jimmy.init")
+require("jimmy")
