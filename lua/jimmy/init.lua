@@ -1,5 +1,4 @@
 require("jimmy.remap")
 require("jimmy.set")
 require("jimmy.packer")
-require("jimmy.after.plugin")
 require("jimmy.ui.feline")
