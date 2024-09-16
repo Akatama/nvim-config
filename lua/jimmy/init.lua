@@ -1,7 +1,6 @@
 require("jimmy.remap")
 require("jimmy.set")
 require("jimmy.lazy_init")
--- require("jimmy.ui.feline")
 
 local augroup = vim.api.nvim_create_augroup
 local jimmyGroup = augroup('jimmy', {})
