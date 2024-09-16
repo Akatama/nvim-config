@@ -1,8 +1,0 @@
-require("after.colors")
-require("after.fugitive")
-require("after.gitsigns")
-require("after.harpoon")
-require("after.lsp")
-require("after.telescope")
-require("after.treesitter")
-require("after.undotree")
