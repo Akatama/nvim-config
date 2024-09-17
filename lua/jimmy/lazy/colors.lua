@@ -1,3 +1,4 @@
+
 function ColorMyPencils(color)
 
 	color = color or "lavender"
@@ -8,4 +9,13 @@ function ColorMyPencils(color)
 
 end
 
-ColorMyPencils()
+return {
+	url = "https://codeberg.org/jthvai/lavender.nvim",
+	branch = "stable",
+	name = "lavender",
+	lazy = false,
+	priority = 1000,
+    config = function()
+        ColorMyPencils()
+    end
+}
