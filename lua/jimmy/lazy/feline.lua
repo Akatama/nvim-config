@@ -3,7 +3,7 @@ return {
     lazy = false,
 	dependencies = {
             "kyazdani42/nvim-web-devicons",
-            "lewis6991/gitsigns.nvim",
+        {"lewis6991/gitsigns.nvim", lazy = false},
     },
     config = function()
         require('gitsigns').setup()
