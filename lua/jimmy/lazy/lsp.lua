@@ -26,11 +26,11 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-		    'lua_ls', 'ts_ls', 
-		    'rust_analyzer', 'azure_pipelines_ls', 
-		    'terraformls', 'bicep', 
-		    'ansiblels', 'dockerls', 
-		    'docker_compose_language_service', 'gopls', 
+		    'lua_ls',
+		    'rust_analyzer', 'azure_pipelines_ls',
+		    'terraformls', 'bicep',
+		    'ansiblels', 'dockerls',
+		    'docker_compose_language_service', 'gopls',
 		    'clangd', 'jedi_language_server'
             },
             handlers = {
@@ -38,23 +38,6 @@ return {
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
-                end,
-
-                zls = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.zls.setup({
-                        root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-                        settings = {
-                            zls = {
-                                enable_inlay_hints = true,
-                                enable_snippets = true,
-                                warn_style = true,
-                            },
-                        },
-                    })
-                    vim.g.zig_fmt_parse_errors = 0
-                    vim.g.zig_fmt_autosave = 0
-
                 end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
@@ -69,6 +52,31 @@ return {
                             }
                         }
                     }
+                end,
+                ['jedi_language_server'] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.jedi_language_server.setup{}
+                end,
+                ['azure_pipelines_ls'] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.azure_pipelines_ls.setup{
+                        settings = {
+                            yaml = {
+                                schemas = {
+                                    ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
+                                        "/azure-pipeline*.y*l",
+                                        "/*.azure*",
+                                        "Azure-Pipelines/**/*.y*l",
+                                        "Pipelines/*.y*l",
+                                    },
+                                },
+                            },
+                        }
+                    }
+                end,
+                ['clangd'] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.clangd.setup{}
                 end,
             }
         })
