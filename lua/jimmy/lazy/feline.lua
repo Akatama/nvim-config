@@ -164,7 +164,7 @@ return {
                 UserSLHintInfo = { fg = pal.hint, bg = pal.info },
                 UserSLInfoWarn = { fg = pal.info, bg = pal.warn },
                 UserSLWarnError = { fg = pal.warn, bg = pal.error },
-                UserSLErrorStatus = { fg = pal.error, bg = status.bg },
+                UserSLErrorStatus = { fg = pal.error, bg = pal.sl.bg },
                 UserSLStatusBg = { fg = status.bg, bg = pal.sl.bg },
 
                 UserSLAlt = pal.sel,
@@ -337,7 +337,7 @@ return {
             },
             file_type = {
                 provider = function()
-                    return fmt(" %s ", vim.bo.filetype:upper())
+                    return fmt(" %s ", vim.bo.filetype)
                 end,
                 hl = "UserSLAlt",
             },
@@ -374,19 +374,12 @@ return {
                 provider = "",
                 hl = "StatusLine",
             },
-            lsp_status = {
-                provider = function()
-                    return vim.tbl_count(vim.lsp.get_active_clients({bufnr = 0})) == 0 and "" or " ◦ "
-                end,
-                hl = "UserSLStatus",
-                left_sep = { str = "", hl = "UserSLStatusBg", always_visible = true },
-                right_sep = { str = "", hl = "UserSLErrorStatus", always_visible = true },
-            },
             lsp_error = {
                 provider = function()
                     return get_diag("ERROR")
                 end,
                 hl = "UserSLError",
+                left_sep = { str = "", hl = "UserSLErrorStatus", always_visible = true },
                 right_sep = { str = "", hl = "UserSLWarnError", always_visible = true },
             },
             lsp_warn = {
@@ -433,7 +426,6 @@ return {
                 c.default, -- must be last
             },
             { -- right
-                c.lsp_status,
                 c.lsp_error,
                 c.lsp_warn,
                 c.lsp_info,
