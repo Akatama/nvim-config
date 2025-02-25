@@ -26,12 +26,12 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-		    'lua_ls',
-		    'rust_analyzer', 'azure_pipelines_ls',
-		    'terraformls', 'bicep',
-		    'ansiblels', 'dockerls',
-		    'docker_compose_language_service', 'gopls',
-		    'clangd', 'jedi_language_server'
+                'lua_ls',
+                'rust_analyzer', 'azure_pipelines_ls',
+                'terraformls', 'bicep',
+                'ansiblels', 'dockerls',
+                'docker_compose_language_service', 'gopls',
+                'clangd', 'pylsp'
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -53,13 +53,31 @@ return {
                         }
                     }
                 end,
-                ['jedi_language_server'] = function()
+                ['pyslp'] = function()
                     local lspconfig = require("lspconfig")
-                    lspconfig.jedi_language_server.setup{}
+                    lspconfig.pylsp.setup {
+                        settings = {
+                            pylsp = {
+                            plugins = {
+                                flake8 = {
+                                    enabled = true,
+                                    maxLineLength = 119,
+                                },
+                                mypy = { enabled = true },
+                                pycodestyle = { enable = false },
+                                pyflakes = { enabled = false },
+                                black = { enable = true, line_length = 119},
+                                autopep8 = { enabled = false },
+                                jedi_completion = { fuzzy = true },
+                                isort = { enabled = false },
+                                }
+                            }
+                        }
+                    }
                 end,
                 ['azure_pipelines_ls'] = function()
                     local lspconfig = require("lspconfig")
-                    lspconfig.azure_pipelines_ls.setup{
+                    lspconfig.azure_pipelines_ls.setup {
                         settings = {
                             yaml = {
                                 schemas = {
@@ -76,7 +94,7 @@ return {
                 end,
                 ['clangd'] = function()
                     local lspconfig = require("lspconfig")
-                    lspconfig.clangd.setup{}
+                    lspconfig.clangd.setup {}
                 end,
             }
         })

@@ -3,7 +3,7 @@ return {
     dependencies = {'nvim-telescope/telescope.nvim'},
     config = function()
         require('telekasten').setup({
-            home = vim.fn.expand("/srv/Documents/Notes/"),
+            home = vim.fn.expand("/home/jimmy/Documents/Notes/"),
         })
     end
 }
