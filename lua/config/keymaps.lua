@@ -87,3 +87,6 @@ end, { desc = "Delete Other Buffers" })
 vim.keymap.set("n", "gcp", "<Cmd>BufferLineGroupClose ungrouped<CR>", { desc = "Delete Non-Pinned Buggers" })
 vim.keymap.set("n", "gcr", "<Cmd>BufferLineCloseRight<CR>", { desc = "Delete Buffers to the Right" })
 vim.keymap.set("n", "gcl", "<Cmd>BufferLineCloseLeft<CR>", { desc = "Delete Buffers to the Left" })
+
+vim.keymap.set("n", "+", "<cmd>normal gcc<cr>", { desc = "Comments line like in my VS vim config" })
+vim.keymap.set("n", "-", "<cmd>normal gcc<cr>", { desc = "Uncomments line like in my VS vim config" })
